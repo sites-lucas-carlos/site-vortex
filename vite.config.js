@@ -23,6 +23,8 @@ function icon(name) {
 }
 
 export default defineConfig({
+  // relative paths: the dist/ folder works on any host or sub-folder (Cloudflare Pages, GitHub Pages, cPanel...)
+  base: './',
   plugins: [
     {
       name: 'inline-svg',
