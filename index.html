@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Vortex | Marketing &amp; Publicidade</title>
+    <meta name="description" content="Tráfego pago, conteúdo, gravação profissional, SEO e tecnologia em uma só equipe. Transformamos atenção digital em faturamento previsível. Primeiro mês sem honorários." />
+    <meta name="theme-color" content="#071F1A" />
+    <link rel="canonical" href="https://vortexinc.com.br/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Vortex Marketing &amp; Publicidade" />
+    <meta property="og:title" content="Vortex | Você cria. Nós vendemos." />
+    <meta property="og:description" content="Tráfego, conteúdo e tecnologia em uma só equipe. Primeiro mês sem honorários." />
+    <meta property="og:url" content="https://vortexinc.com.br/" />
+    <meta property="og:image" content="https://vortexinc.com.br/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Vortex Marketing & Publicidade",
+        "slogan": "Você cria. Nós vendemos.",
+        "url": "https://vortexinc.com.br/",
+        "email": "contato@vortexinc.com.br",
+        "image": "https://vortexinc.com.br/og.jpg",
+        "areaServed": "BR",
+        "founder": [
+          { "@type": "Person", "name": "Vitor Vilanova" },
+          { "@type": "Person", "name": "Maurício Chaves" },
+          { "@type": "Person", "name": "Henrique Chaves" }
+        ]
+      }
+    </script>
+    <script>
+      document.documentElement.classList.add('js')
+      // safety net: never keep the intro screen up if scripts fail to load
+      setTimeout(function () {
+        var l = document.querySelector('.loader')
+        if (l) l.classList.add('is-done')
+      }, 7000)
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body>
+    <!-- Shared gradient for every inline Vortex symbol -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="vxg" x1="0" y1="0" x2="868" y2="868" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#F4D58F" />
+          <stop offset=".5" stop-color="#D9AC57" />
+          <stop offset="1" stop-color="#B38A3E" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Intro -->
+    <div class="loader" aria-hidden="true">
+      <div class="loader__mark"><!-- symbol:loader-symbol --></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="nav" data-nav>
+      <div class="nav__bar">
+        <a class="brand" href="#inicio" aria-label="Vortex, voltar ao início">
+          <!-- symbol:brand-symbol -->
+          <span class="brand__word">Vortex</span>
+        </a>
+        <nav class="nav__links" aria-label="Principal">
+          <a href="#servicos">Serviços</a>
+          <a href="#oferta">Oferta</a>
+          <a href="#metodo">Método</a>
+          <a href="#equipe">Equipe</a>
+          <a href="#duvidas">Dúvidas</a>
+        </nav>
+        <a class="btn btn--gold btn--sm nav__cta" href="#contato" data-magnetic>
+          <span>Quero meu mês grátis</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-menu-toggle>
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="menu" id="menu" aria-hidden="true" data-menu>
+      <nav class="menu__links" aria-label="Menu">
+        <a href="#servicos">Serviços</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#metodo">Método</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <a class="btn btn--gold menu__cta" href="#contato"><span>Quero meu mês grátis</span></a>
+      <a class="menu__mail" href="mailto:contato@vortexinc.com.br">contato@vortexinc.com.br</a>
+    </div>
+
+    <main id="conteudo">
+      <!-- HERO -->
+      <section class="hero" id="inicio">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow" data-hero-fade>Marketing &amp; Publicidade</p>
+            <h1 class="hero__title" data-hero-title><span class="hero__line">Você cria.</span> <span class="hero__line gold">Nós vendemos.</span></h1>
+            <p class="hero__sub" data-hero-fade>
+              Tráfego, conteúdo e tecnologia em uma só equipe para transformar atenção em faturamento previsível.
+            </p>
+            <div class="hero__ctas" data-hero-fade>
+              <a class="btn btn--gold" href="#contato" data-magnetic>
+                <span>Quero meu mês grátis</span>
+                <!-- icon:arrow-up-right -->
+              </a>
+              <a class="btn btn--ghost" href="#servicos"><span>Ver serviços</span></a>
+            </div>
+          </div>
+          <div class="hero__visual" data-hero-visual>
+            <div class="hero__orbit" data-orbit>
+              <!-- symbol:hero-symbol -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Giant wordmark -->
+      <div class="bigword" aria-hidden="true" data-bigword>
+        <span>V</span><span>O</span><span>R</span><span>T</span><span>E</span><span>X</span>
+      </div>
+
+      <!-- MANIFESTO + NÚMEROS (single light section) -->
+      <section class="paper" id="sobre" data-paper>
+        <div class="container">
+          <p class="manifesto" data-words>
+            Você não precisa de mais uma agência que entrega post bonito. Precisa de uma estrutura que transforma atenção em clientes, clientes em faturamento e faturamento em previsibilidade.
+          </p>
+          <div class="founders-line">
+            <span>Vitor Vilanova</span><span>Maurício Chaves</span><span>Henrique Chaves</span>
+          </div>
+
+          <ul class="stats" role="list">
+            <li class="stat">
+              <span class="stat__label">Anos de mercado</span>
+              <span class="stat__num"><span data-count="10">10</span></span>
+              <span class="stat__desc">Uma década transformando operações locais e globais.</span>
+            </li>
+            <li class="stat stat--dark">
+              <span class="stat__label">Honorários no 1º mês</span>
+              <span class="stat__num"><small>R$</small><span data-count="0">0</span></span>
+              <span class="stat__desc">Provamos nossa capacidade na prática, antes de você pagar.</span>
+            </li>
+            <li class="stat">
+              <span class="stat__label">Para iniciar a operação</span>
+              <span class="stat__num"><span data-count="7">7</span><small>dias</small></span>
+              <span class="stat__desc">Do briefing às campanhas no ar em até uma semana.</span>
+            </li>
+            <li class="stat">
+              <span class="stat__label">Times especialistas</span>
+              <span class="stat__num"><span data-count="5">5</span></span>
+              <span class="stat__desc">Vídeo, edição, tráfego, social media e desenvolvimento.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ESTRUTURA (bento) -->
+      <section class="section structure" id="estrutura">
+        <div class="container">
+          <h2 class="h2" data-split>Você não contrata uma pessoa. <span class="muted">Acopla um time inteiro ao seu negócio.</span></h2>
+
+          <div class="bento">
+            <article class="cell cell--media cell--tall" data-reveal>
+              <div class="cell__img" data-parallax>
+                <img src="/src/assets/camera.webp" alt="Câmera de cinema em estabilizador ao lado de um drone em estúdio" width="1000" height="1241" loading="lazy" decoding="async" />
+              </div>
+              <div class="cell__body">
+                <h3>Videomakers profissionais</h3>
+                <p>Câmeras de nível cinema, iluminação avançada e captação com drone.</p>
+              </div>
+            </article>
+
+            <article class="cell cell--gold" data-reveal>
+              <!-- icon:chart-line-up -->
+              <div class="cell__body">
+                <h3>Gestores de tráfego analíticos</h3>
+                <p>Decisões guiadas por dados, métricas e retorno sobre investimento.</p>
+              </div>
+            </article>
+
+            <article class="cell cell--rings" data-reveal>
+              <div class="cell__rings" aria-hidden="true"><!-- symbol:ring-symbol --></div>
+              <!-- icon:chat-circle-dots -->
+              <div class="cell__body">
+                <h3>Social media e posicionamento</h3>
+                <p>Autoridade e presença de marca que geram demanda.</p>
+              </div>
+            </article>
+
+            <article class="cell cell--media cell--wide" data-reveal>
+              <div class="cell__img" data-parallax>
+                <img src="/src/assets/edicao.webp" alt="Editor de vídeo trabalhando em uma linha do tempo em dois monitores" width="1400" height="781" loading="lazy" decoding="async" />
+              </div>
+              <div class="cell__body">
+                <h3>Editores de alta performance</h3>
+                <p>Cortes pensados para retenção e conversão.</p>
+              </div>
+            </article>
+
+            <article class="cell cell--code" data-reveal>
+              <!-- icon:code -->
+              <div class="cell__body">
+                <h3>Programadores e desenvolvedores</h3>
+                <p>Sites e sistemas sob medida, rápidos e escaláveis.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section class="section services" id="servicos">
+        <div class="container services__grid">
+          <div class="services__intro">
+            <div class="services__sticky">
+              <h2 class="h2" data-split>Tudo o que sua empresa precisa para <span class="gold">vender mais.</span></h2>
+              <p class="lead">Da primeira impressão ao fechamento: mídia, conteúdo, tecnologia e operação trabalhando juntos.</p>
+              <a class="btn btn--gold" href="#contato" data-magnetic><span>Quero meu mês grátis</span><!-- icon:arrow-up-right --></a>
+            </div>
+          </div>
+
+          <div class="services__lists">
+            <div class="svc-group">
+              <h3 class="svc-group__title">Performance e conteúdo</h3>
+              <ul class="svc-list" role="list">
+                <li class="svc" data-svc>
+                  <span class="svc__num">01</span>
+                  <span class="svc__icon"><!-- icon:target --></span>
+                  <div class="svc__text"><h4>Tráfego pago</h4><p>Anúncios de alta precisão no Meta Ads, Google Ads, TikTok Ads e iFood.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">02</span>
+                  <span class="svc__icon"><!-- icon:users-three --></span>
+                  <div class="svc__text"><h4>Tráfego orgânico</h4><p>Audiência qualificada e engajada, sem custo direto de mídia.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">03</span>
+                  <span class="svc__icon"><!-- icon:magnifying-glass --></span>
+                  <div class="svc__text"><h4>SEO e GEO</h4><p>Sua empresa bem posicionada no Google e nas respostas de inteligências artificiais.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">04</span>
+                  <span class="svc__icon"><!-- icon:calendar-check --></span>
+                  <div class="svc__text"><h4>Planejamento de conteúdo</h4><p>Linhas editoriais que educam o público e levam à conversão.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">05</span>
+                  <span class="svc__icon"><!-- icon:video-camera --></span>
+                  <div class="svc__text"><h4>Gravação profissional</h4><p>Produção audiovisual de alto padrão com drone, câmera e iluminação.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">06</span>
+                  <span class="svc__icon"><!-- icon:pen-nib --></span>
+                  <div class="svc__text"><h4>Criação de anúncios</h4><p>Design persuasivo e copywriting para alta taxa de clique.</p></div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="svc-group">
+              <h3 class="svc-group__title">Tecnologia, delivery e influência</h3>
+              <ul class="svc-list" role="list">
+                <li class="svc" data-svc>
+                  <span class="svc__num">07</span>
+                  <span class="svc__icon"><!-- icon:fork-knife --></span>
+                  <div class="svc__text"><h4>Otimização de cardápio digital</h4><p>Engenharia de cardápio focada em aumentar o ticket médio.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">08</span>
+                  <span class="svc__icon"><!-- icon:moped --></span>
+                  <div class="svc__text"><h4>Gestão e faturamento no iFood</h4><p>Domínio dos algoritmos e das campanhas do app de delivery.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">09</span>
+                  <span class="svc__icon"><!-- icon:funnel --></span>
+                  <div class="svc__text"><h4>Funil de vendas</h4><p>A jornada completa do cliente mapeada, do clique ao fechamento.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">10</span>
+                  <span class="svc__icon"><!-- icon:robot --></span>
+                  <div class="svc__text"><h4>IA na operação</h4><p>Automação e inteligência artificial no atendimento e nos processos.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">11</span>
+                  <span class="svc__icon"><!-- icon:browsers --></span>
+                  <div class="svc__text"><h4>Criação e atualização de sites</h4><p>Páginas ultrarrápidas e otimizadas para conversão.</p></div>
+                </li>
+                <li class="svc" data-svc>
+                  <span class="svc__num">12</span>
+                  <span class="svc__icon"><!-- icon:star --></span>
+                  <div class="svc__text"><h4>Contratação de influencers</h4><p>Mapeamento, negociação e gestão de influenciadores estratégicos.</p></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGMENTOS (marquee) -->
+      <section class="segments" aria-label="Segmentos que já atendemos">
+        <p class="segments__caption container">Já ajudamos a crescer empresas de</p>
+        <div class="marquee" data-marquee>
+          <div class="marquee__track">
+            <span>Restaurantes e delivery</span><i aria-hidden="true">✦</i>
+            <span>Médicos e clínicas</span><i aria-hidden="true">✦</i>
+            <span>Infoprodutos e cursos</span><i aria-hidden="true">✦</i>
+            <span>Mercado financeiro</span><i aria-hidden="true">✦</i>
+            <span>Imóveis no exterior</span><i aria-hidden="true">✦</i>
+            <span>Limpeza e serviços</span><i aria-hidden="true">✦</i>
+          </div>
+        </div>
+      </section>
+
+      <!-- OFERTA -->
+      <section class="offer" id="oferta" data-offer>
+        <div class="offer__arc" aria-hidden="true" data-arc></div>
+        <div class="container offer__inner">
+          <p class="eyebrow">Oferta risco zero</p>
+          <p class="offer__big" data-offer-big><small>R$</small>0</p>
+          <h2 class="h2 offer__title" data-split>O primeiro mês é por nossa conta.</h2>
+          <p class="lead offer__lead">
+            Invertemos a lógica do mercado para provar nossa capacidade na prática. Gestão de tráfego, conteúdo, estratégia e equipe sem custo de honorários.
+          </p>
+          <ul class="offer__terms" role="list">
+            <li data-term><span>Honorários</span><strong>R$ 0 no primeiro mês</strong></li>
+            <li data-term><span>Único custo</span><strong>O budget dos anúncios</strong></li>
+            <li data-term><span>Depois de 30 dias</span><strong>Você decide se continua</strong></li>
+          </ul>
+          <a class="btn btn--gold btn--lg" href="#contato" data-magnetic><span>Quero meu mês grátis</span><!-- icon:arrow-up-right --></a>
+          <p class="offer__note">Sem letras miúdas.</p>
+        </div>
+      </section>
+
+      <!-- MÉTODO (horizontal) -->
+      <section class="method" id="metodo" data-method>
+        <div class="method__pin">
+          <div class="container method__head">
+            <h2 class="h2" data-split>Da conversa à operação no ar <span class="gold">em até 7 dias.</span></h2>
+            <div class="method__progress" aria-hidden="true"><span data-method-bar></span></div>
+          </div>
+          <div class="method__track" data-method-track>
+            <article class="step">
+              <span class="step__num">01</span>
+              <h3>Escolha do orçamento</h3>
+              <p>Você define o budget de mídia que será investido nas campanhas.</p>
+              <span class="step__ico"><!-- icon:target --></span>
+            </article>
+            <article class="step">
+              <span class="step__num">02</span>
+              <h3>Reunião de alinhamento</h3>
+              <p>Entendemos seu negócio, suas metas e o seu cliente ideal.</p>
+              <span class="step__ico"><!-- icon:chat-circle-dots --></span>
+            </article>
+            <article class="step">
+              <span class="step__num">03</span>
+              <h3>Captação e estrutura</h3>
+              <p>Gravação, criativos, funil e campanhas montados pela nossa equipe.</p>
+              <span class="step__ico"><!-- icon:video-camera --></span>
+            </article>
+            <article class="step step--gold">
+              <span class="step__num">04</span>
+              <h3>Operação no ar</h3>
+              <p>Em até 7 dias sua operação começa, com acompanhamento de resultados.</p>
+              <span class="step__ico"><!-- icon:trend-up --></span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EQUIPE -->
+      <section class="section team" id="equipe">
+        <div class="container team__grid">
+          <div class="team__intro">
+            <h2 class="h2" data-split>Quem está por trás da Vortex.</h2>
+            <p class="lead">Dez anos de atuação em mercados como análise financeira, imóveis no exterior, saúde, delivery e infoprodutos.</p>
+          </div>
+          <ul class="founders" role="list">
+            <li class="founder" data-reveal>
+              <span class="founder__mono" aria-hidden="true"><!-- symbol:mono-symbol --><b>VV</b></span>
+              <span class="founder__name">Vitor Vilanova</span>
+              <span class="founder__role">Founder</span>
+            </li>
+            <li class="founder" data-reveal>
+              <span class="founder__mono" aria-hidden="true"><!-- symbol:mono-symbol --><b>MC</b></span>
+              <span class="founder__name">Maurício Chaves</span>
+              <span class="founder__role">Founder</span>
+            </li>
+            <li class="founder" data-reveal>
+              <span class="founder__mono" aria-hidden="true"><!-- symbol:mono-symbol --><b>HC</b></span>
+              <span class="founder__name">Henrique Chaves</span>
+              <span class="founder__role">Founder</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section faq" id="duvidas">
+        <div class="container faq__grid">
+          <h2 class="h2" data-split>Perguntas frequentes</h2>
+          <div class="faq__list" data-faq>
+            <details class="qa" data-reveal>
+              <summary><span>Como funciona o primeiro mês grátis?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>No primeiro mês você não paga honorários. Gestão de tráfego, produção de conteúdo, estratégia e equipe ficam por nossa conta. O único investimento é o budget dos anúncios.</p></div></div>
+            </details>
+            <details class="qa" data-reveal>
+              <summary><span>O que é o budget dos anúncios?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>É o valor investido diretamente no impulsionamento das campanhas nas plataformas, como Meta, Google, TikTok e iFood. Você define esse valor com a gente logo no início.</p></div></div>
+            </details>
+            <details class="qa" data-reveal>
+              <summary><span>Preciso continuar depois dos 30 dias?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>Não. Ao final do primeiro mês você decide livremente se quer contratar a continuidade.</p></div></div>
+            </details>
+            <details class="qa" data-reveal>
+              <summary><span>Em quanto tempo a operação começa?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>Em até 7 dias. Depois da reunião de alinhamento, nossa equipe cuida da gravação, dos criativos, do funil e das campanhas.</p></div></div>
+            </details>
+            <details class="qa" data-reveal>
+              <summary><span>Vocês atendem o meu segmento?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>Já atuamos com restaurantes e delivery, médicos e clínicas, infoprodutos, mercado financeiro, imóveis no exterior e empresas de serviços. Preencha o formulário e avaliamos o seu caso.</p></div></div>
+            </details>
+            <details class="qa" data-reveal>
+              <summary><span>A Vortex faz só anúncios?</span><i aria-hidden="true"><!-- icon:plus --></i></summary>
+              <div class="qa__a"><div><p>Não. Além do tráfego pago, cuidamos de conteúdo, gravação profissional, SEO, sites, funil de vendas, iFood, influenciadores e automações com IA.</p></div></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section class="section contact" id="contato">
+        <div class="contact__glow" aria-hidden="true"></div>
+        <div class="container contact__grid">
+          <div class="contact__intro">
+            <h2 class="h2 contact__title" data-split>Pronto para escalar <span class="gold">com risco zero?</span></h2>
+            <p class="lead">Preencha o formulário e um especialista da Vortex entra em contato para agendar a reunião de alinhamento.</p>
+            <a class="contact__mail" href="mailto:contato@vortexinc.com.br">
+              <!-- icon:envelope-simple -->
+              <span>contato@vortexinc.com.br</span>
+            </a>
+          </div>
+
+          <form class="form" data-form novalidate>
+            <div class="form__fields">
+              <div class="field">
+                <label for="f-nome">Nome</label>
+                <input id="f-nome" name="nome" type="text" autocomplete="name" required placeholder="Seu nome completo" />
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-tel">WhatsApp</label>
+                <input id="f-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="(00) 00000-0000" data-phone />
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-email">E-mail</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com.br" />
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-empresa">Empresa</label>
+                <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required placeholder="Nome da empresa" />
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-seg">Segmento</label>
+                <select id="f-seg" name="segmento" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Restaurante ou delivery</option>
+                  <option>Clínica ou saúde</option>
+                  <option>Infoproduto ou cursos</option>
+                  <option>Mercado financeiro</option>
+                  <option>Imobiliário</option>
+                  <option>Serviços</option>
+                  <option>Varejo ou e-commerce</option>
+                  <option>Outro</option>
+                </select>
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-fat">Faturamento mensal</label>
+                <select id="f-fat" name="faturamento" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Até R$ 30 mil</option>
+                  <option>De R$ 30 mil a R$ 50 mil</option>
+                  <option>De R$ 50 mil a R$ 100 mil</option>
+                  <option>De R$ 100 mil a R$ 300 mil</option>
+                  <option>Acima de R$ 300 mil</option>
+                </select>
+                <p class="field__err" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-msg">Qual é o seu principal objetivo? <em>(opcional)</em></label>
+                <textarea id="f-msg" name="mensagem" rows="3" placeholder="Ex.: aumentar os pedidos no delivery"></textarea>
+              </div>
+              <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            </div>
+
+            <button class="btn btn--gold btn--lg form__submit" type="submit" data-magnetic>
+              <span data-submit-label>Quero meu mês grátis</span><!-- icon:arrow-up-right -->
+            </button>
+            <p class="form__legal">Ao enviar, você concorda em ser contatado pela Vortex. Seus dados são usados apenas para esse atendimento.</p>
+            <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+
+            <div class="form__done" data-form-done hidden>
+              <span class="form__done-ico"><!-- icon:check --></span>
+              <h3>Recebemos seus dados.</h3>
+              <p>Em breve um especialista da Vortex entra em contato com você.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <a class="brand" href="#inicio" aria-label="Vortex, voltar ao início">
+              <!-- symbol:brand-symbol -->
+              <span class="brand__word">Vortex</span>
+            </a>
+            <p>Você cria. Nós vendemos.</p>
+          </div>
+          <nav class="footer__nav" aria-label="Rodapé">
+            <a href="#servicos">Serviços</a>
+            <a href="#oferta">Oferta</a>
+            <a href="#metodo">Método</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#duvidas">Dúvidas</a>
+            <a href="#contato">Contato</a>
+          </nav>
+          <div class="footer__contact">
+            <span>Fale com a gente</span>
+            <a href="mailto:contato@vortexinc.com.br">contato@vortexinc.com.br</a>
+          </div>
+        </div>
+        <div class="footer__word" aria-hidden="true">Vortex</div>
+        <div class="footer__bottom">
+          <span>© 2026 Vortex Marketing &amp; Publicidade. Todos os direitos reservados.</span>
+          <a href="#inicio" class="footer__top-link">Voltar ao topo <!-- icon:arrow-up --></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
