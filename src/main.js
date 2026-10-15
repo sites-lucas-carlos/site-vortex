@@ -325,43 +325,95 @@ function scrollScenes() {
 }
 
 /* ---------------------------------------------------------
-   Method: vertical scroll drives a horizontal track (desktop)
+   Method: free horizontal scroller. The page keeps scrolling
+   down; cards move sideways by drag, swipe, trackpad or arrows.
    --------------------------------------------------------- */
 function method() {
-  const section = $('[data-method]')
   const track = $('[data-method-track]')
   const bar = $('[data-method-bar]')
-  const mm = gsap.matchMedia()
+  const prev = $('[data-method-prev]')
+  const next = $('[data-method-next]')
+  const steps = $$('.step', track)
 
-  mm.add('(min-width: 861px)', () => {
-    section.classList.add('is-pinned')
-    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth)
-    gsap.to(track, {
-      x: () => -distance(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: () => `+=${distance()}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => gsap.set(bar, { scaleX: self.progress }),
-      },
-    })
-    return () => section.classList.remove('is-pinned')
+  const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth)
+  const stepSize = () => steps[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap || '20')
+
+  // progress bar = how much of the row has been seen; arrows disable at the ends
+  let queued = false
+  const update = () => {
+    queued = false
+    const max = maxScroll()
+    const seen = track.scrollWidth ? (track.scrollLeft + track.clientWidth) / track.scrollWidth : 1
+    bar.style.transform = `scaleX(${Math.min(1, seen)})`
+    prev.disabled = track.scrollLeft <= 2
+    next.disabled = track.scrollLeft >= max - 2
+  }
+  const queueUpdate = () => {
+    if (!queued) {
+      queued = true
+      requestAnimationFrame(update)
+    }
+  }
+  track.addEventListener('scroll', queueUpdate, { passive: true })
+  window.addEventListener('resize', queueUpdate)
+  update()
+
+  const scrollToX = (x) => {
+    const left = gsap.utils.clamp(0, maxScroll(), x)
+    if (reduce) track.scrollLeft = left
+    else gsap.to(track, { scrollLeft: left, duration: 0.9, ease: 'expo.out', overwrite: true })
+  }
+  const snap = (x) => Math.round(x / stepSize()) * stepSize()
+  prev.addEventListener('click', () => scrollToX(snap(track.scrollLeft) - stepSize()))
+  next.addEventListener('click', () => scrollToX(snap(track.scrollLeft) + stepSize()))
+
+  // mouse drag with a little momentum (touch and trackpads scroll natively)
+  let dragging = false
+  let startX = 0
+  let startLeft = 0
+  let lastX = 0
+  let lastT = 0
+  let velocity = 0
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return
+    dragging = true
+    startX = lastX = e.clientX
+    startLeft = track.scrollLeft
+    lastT = performance.now()
+    velocity = 0
+    gsap.killTweensOf(track)
+    track.classList.add('is-dragging')
+    track.setPointerCapture(e.pointerId)
   })
+  track.addEventListener('pointermove', (e) => {
+    if (!dragging) return
+    track.scrollLeft = startLeft - (e.clientX - startX)
+    const now = performance.now()
+    velocity = (e.clientX - lastX) / Math.max(1, now - lastT)
+    lastX = e.clientX
+    lastT = now
+  })
+  const endDrag = (e) => {
+    if (!dragging) return
+    dragging = false
+    track.classList.remove('is-dragging')
+    if (track.hasPointerCapture(e.pointerId)) track.releasePointerCapture(e.pointerId)
+    scrollToX(snap(track.scrollLeft - velocity * 280))
+  }
+  track.addEventListener('pointerup', endDrag)
+  track.addEventListener('pointercancel', endDrag)
+  track.addEventListener('dragstart', (e) => e.preventDefault())
 
-  mm.add('(max-width: 860px)', () => {
-    gsap.from($$('.step', track), {
-      y: 50,
+  if (!reduce) {
+    gsap.from(steps, {
+      x: 80,
       opacity: 0,
-      duration: 1,
+      duration: 1.1,
       ease: 'expo.out',
-      stagger: 0.1,
+      stagger: 0.08,
       scrollTrigger: { trigger: track, start: 'top 85%', once: true },
     })
-  })
+  }
 }
 
 /* ---------------------------------------------------------
@@ -464,6 +516,7 @@ function boot() {
   initNav()
   interactions()
   marquee()
+  method()
   initForm({
     onSuccess: (done) => {
       if (!reduce) gsap.from(done.children, { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.08 })
@@ -480,7 +533,6 @@ function boot() {
   hero(master)
   master.add(() => lenis && lenis.start(), '-=1')
   scrollScenes()
-  method()
 
   window.addEventListener('load', () => ScrollTrigger.refresh())
 }

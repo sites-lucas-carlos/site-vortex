@@ -348,9 +348,15 @@
         <div class="method__pin">
           <div class="container method__head">
             <h2 class="h2" data-split>Da conversa à operação no ar, <span class="gold">com foco em vendas.</span></h2>
-            <div class="method__progress" aria-hidden="true"><span data-method-bar></span></div>
+            <div class="method__controls">
+              <div class="method__progress" aria-hidden="true"><span data-method-bar></span></div>
+              <div class="method__arrows">
+                <button class="method__arrow" type="button" aria-label="Etapa anterior" data-method-prev><!-- icon:arrow-left --></button>
+                <button class="method__arrow" type="button" aria-label="Próxima etapa" data-method-next><!-- icon:arrow-right --></button>
+              </div>
+            </div>
           </div>
-          <div class="method__track" data-method-track>
+          <div class="method__track" data-method-track tabindex="0" role="region" aria-label="Etapas do método, role para o lado">
             <article class="step">
               <span class="step__num">01</span>
               <h3>Escolha do orçamento</h3>
