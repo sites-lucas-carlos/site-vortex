@@ -12,6 +12,8 @@ npm run build    # gera a pasta dist/ para publicar
 
 A pasta `dist/` pode ser publicada em qualquer hospedagem estática (Vercel, Netlify, Hostinger, Cloudflare Pages).
 
+**GitHub Pages (automático):** cada envio para a branch `main` publica o site em `https://sites-lucas-carlos.github.io/site-vortex/` pelo workflow `.github/workflows/deploy.yml`. Configuração única: Settings > Pages > Source: GitHub Actions.
+
 ## Antes de publicar
 
 1. **Ativar o formulário.** Os leads chegam por e-mail via FormSubmit. O primeiro envio dispara um e-mail de ativação para `contato@vortexinc.com.br`. Alguém precisa clicar em "Activate Form" nesse e-mail. Até isso acontecer, nenhum lead é entregue. O endereço está em `src/form.js` (`ENDPOINT`).
