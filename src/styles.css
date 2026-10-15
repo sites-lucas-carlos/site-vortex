@@ -668,10 +668,17 @@ textarea {
 .stat--dark .stat__num {
   color: var(--gold-400);
 }
-.stat__num small {
-  font-size: 0.36em;
-  letter-spacing: -0.02em;
-  font-weight: 500;
+/* text statement in place of a number */
+.stat__headline {
+  margin-top: auto;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+.stat--dark .stat__headline {
+  color: var(--gold-400);
 }
 .stat__desc {
   font-size: 14.5px;
@@ -976,8 +983,10 @@ textarea {
 
 /* ---------- Offer ---------- */
 .offer {
+  --offer-pad: clamp(110px, 14vw, 200px);
+  --offer-big: clamp(40px, 13.5vw, 168px);
   position: relative;
-  padding: clamp(110px, 14vw, 200px) 0 clamp(120px, 14vw, 200px);
+  padding: var(--offer-pad) 0 clamp(120px, 14vw, 200px);
   overflow: hidden;
   background: var(--green-950);
   text-align: center;
@@ -986,7 +995,8 @@ textarea {
 .offer__arc {
   position: absolute;
   left: 50%;
-  top: 30%;
+  /* the horizon crosses the lower line of the big headline at every width */
+  top: calc(var(--offer-pad) + var(--offer-big) * 1.55);
   width: max(1500px, 160vw);
   aspect-ratio: 1;
   transform: translateX(-50%);
@@ -1005,24 +1015,19 @@ textarea {
   gap: 24px;
 }
 .offer__big {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.06em;
-  font-size: clamp(140px, 26vw, 380px);
-  line-height: 0.8;
-  letter-spacing: -0.07em;
+  font-size: var(--offer-big);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
   font-weight: 600;
   background: linear-gradient(180deg, var(--gold-200), var(--gold-500) 55%, var(--gold-600));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  padding: 0.04em 0.06em 0.02em 0;
+  /* room for the descenders (ç, p) so the gradient clip doesn't cut them */
+  padding: 0.04em 0.06em 0.14em;
 }
-.offer__big small {
-  font-size: 0.2em;
-  letter-spacing: -0.02em;
-  margin-top: 0.5em;
+.offer__big span {
+  display: block;
 }
 .offer__title {
   max-width: 16ch;
@@ -1783,7 +1788,8 @@ html:not(.js) .qa[open] summary i,
   .stat {
     min-height: 0;
   }
-  .stat__num {
+  .stat__num,
+  .stat__headline {
     margin-top: 12px;
   }
   .svc {

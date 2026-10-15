@@ -114,7 +114,7 @@ export function initForm({ onSuccess } = {}) {
       status.textContent = 'Não foi possível enviar agora. Tente de novo ou escreva para contato@vortexinc.com.br.'
     } finally {
       submit.disabled = false
-      label.textContent = 'Quero meu mês grátis'
+      label.textContent = 'Quero uma proposta sob medida'
     }
   })
 }

@@ -292,7 +292,7 @@ function scrollScenes() {
     )
   })
 
-  // Offer: the zero grows into place while the horizon rises
+  // Offer: the big gold headline grows into place while the horizon rises
   gsap.fromTo(
     '[data-offer-big]',
     { scale: 0.62, yPercent: 18, opacity: 0.15 },
