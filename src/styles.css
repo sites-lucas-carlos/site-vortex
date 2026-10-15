@@ -59,7 +59,10 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scroll-padding-top: 96px;
+  /* nothing may push the page sideways on phones (no sideways pan, no zoomed-out start) */
+  overflow-x: hidden;
 }
 html.lenis,
 html.lenis body {
@@ -80,7 +83,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+  overflow-wrap: break-word;
   -webkit-tap-highlight-color: transparent;
+}
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
 }
 body::after {
   /* grain: fixed, non-interactive */
@@ -216,6 +225,7 @@ textarea {
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  max-width: 100%;
   cursor: pointer;
   isolation: isolate;
   overflow: hidden;
@@ -567,7 +577,7 @@ textarea {
   padding-inline: var(--gutter);
   font-family: var(--font-brand);
   font-weight: 500;
-  font-size: clamp(64px, 19.5vw, 340px);
+  font-size: clamp(40px, 19.5vw, 340px);
   line-height: 0.8;
   color: var(--gold-400);
   overflow: hidden;
@@ -1111,6 +1121,37 @@ textarea {
   display: flex;
   gap: 10px;
 }
+.method__hint {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+.method__hint .ico {
+  font-size: 16px;
+  color: var(--gold-400);
+}
+@media (hover: none) {
+  .method__hint {
+    display: inline-flex;
+  }
+}
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .method__hint .ico {
+    animation: hint-nudge 1.6s var(--ease-io) infinite;
+  }
+}
+@keyframes hint-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
 .method__arrow {
   display: grid;
   place-items: center;
@@ -1642,7 +1683,7 @@ html:not(.js) .qa[open] summary i,
   margin: clamp(48px, 7vw, 96px) 0 8px;
   font-family: var(--font-brand);
   font-weight: 500;
-  font-size: clamp(64px, 18.5vw, 300px);
+  font-size: clamp(40px, 18.5vw, 300px);
   line-height: 0.8;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1751,7 +1792,7 @@ html:not(.js) .qa[open] summary i,
     align-items: flex-start;
   }
   .hero__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .hero__visual {
     order: -1;
@@ -1763,14 +1804,14 @@ html:not(.js) .qa[open] summary i,
   .team__grid,
   .faq__grid,
   .contact__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .services__sticky,
   .contact__intro {
     position: static;
   }
   .bento {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-auto-rows: auto;
   }
   .cell--tall,
@@ -1800,7 +1841,7 @@ html:not(.js) .qa[open] summary i,
     margin-top: 8px;
   }
   .offer__terms {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .offer__terms li + li {
     border-left: 0;
@@ -1817,7 +1858,7 @@ html:not(.js) .qa[open] summary i,
     display: none;
   }
   .footer__top {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1846,7 +1887,7 @@ html:not(.js) .qa[open] summary i,
     flex: 1 1 100%;
   }
   .stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .stat {
     min-height: 0;
@@ -1862,7 +1903,7 @@ html:not(.js) .qa[open] summary i,
     display: none;
   }
   .form__fields {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .qa__a p {
     padding-right: 0;
@@ -1874,8 +1915,31 @@ html:not(.js) .qa[open] summary i,
     grid-column: 2;
     margin-top: -18px;
   }
-  .btn--lg {
-    padding: 0 24px;
+  /* buttons wrap instead of pushing the page sideways; main CTAs take the full row */
+  .btn {
+    white-space: normal;
+    height: auto;
+    min-height: var(--h);
+    padding: 12px 22px;
+    text-align: center;
+    line-height: 1.25;
+  }
+  .services__sticky .btn,
+  .offer .btn--lg,
+  .menu__cta {
+    width: 100%;
+  }
+  .menu__cta {
+    align-self: stretch;
+  }
+  .hero__title {
+    font-size: clamp(36px, 12vw, 52px);
+  }
+  .hero__line {
+    white-space: normal;
+  }
+  .svc::before {
+    inset: 0 -10px;
   }
 }
 
