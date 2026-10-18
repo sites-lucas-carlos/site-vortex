@@ -16,6 +16,7 @@ A pasta `dist/` pode ser publicada em qualquer hospedagem estática (Vercel, Net
 
 ## Antes de publicar
 
+1. **Planilha de leads.** Todo envio do formulário é gravado numa planilha do Google Sheets pelo script `apps-script/leads.gs` (as instruções de instalação estão no topo do arquivo). A URL do app da web fica em `src/form.js` (`SHEETS_ENDPOINT`). O formulário só mostra erro se a planilha e o e-mail falharem juntos.
 1. **Ativar o formulário.** Os leads chegam por e-mail via FormSubmit. O primeiro envio dispara um e-mail de ativação para `contato@vortexinc.com.br`. Alguém precisa clicar em "Activate Form" nesse e-mail. Até isso acontecer, nenhum lead é entregue. O endereço está em `src/form.js` (`ENDPOINT`).
 2. **Domínio.** Canonical, Open Graph, sitemap e robots usam `https://vortexinc.com.br`. Se o domínio for outro, troque em `index.html`, `public/robots.txt` e `public/sitemap.xml`.
 

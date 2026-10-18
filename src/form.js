@@ -1,9 +1,12 @@
-// Contact form: validation, phone mask and delivery by e-mail.
+// Contact form: validation, phone mask and delivery.
 //
-// Delivery uses FormSubmit (https://formsubmit.co), no backend needed.
-// IMPORTANT: the first submission sends an activation e-mail to the address below.
-// Someone must click "Activate Form" in that e-mail before leads start arriving.
-// After activation you can swap the address for the random alias FormSubmit provides.
+// Every lead goes to two places in parallel; the submission counts as sent if either works:
+// 1. Google Sheets, through the Apps Script web app in apps-script/leads.gs (the source of truth).
+// 2. E-mail via FormSubmit (https://formsubmit.co), no backend needed.
+//    IMPORTANT: the first submission sends an activation e-mail to the address below.
+//    Someone must click "Activate Form" in that e-mail before leads start arriving.
+//    After activation you can swap the address for the random alias FormSubmit provides.
+const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzDuK2SeED8qUbqn4jlyG0lXYk4rRd2oCEqcrZK1Bw-YjCoCY5AdT-78E5bF_L2RTnKKg/exec'
 const ENDPOINT = 'https://formsubmit.co/ajax/contato@vortexinc.com.br'
 
 const MESSAGES = {
@@ -21,6 +24,24 @@ function maskPhone(value) {
   if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`
   if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`
   return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`
+}
+
+// Apps Script answers with a redirect; a text/plain body keeps this a simple request (no CORS preflight).
+async function saveToSheet(lead) {
+  if (!SHEETS_ENDPOINT) throw new Error('SHEETS_ENDPOINT not set')
+  const res = await fetch(SHEETS_ENDPOINT, { method: 'POST', body: JSON.stringify(lead) })
+  const json = await res.json().catch(() => ({}))
+  if (!res.ok || json.ok !== true) throw new Error(json.error || res.statusText)
+}
+
+async function sendEmail(payload) {
+  const res = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  const json = await res.json().catch(() => ({}))
+  if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || res.statusText)
 }
 
 function validate(input) {
@@ -95,14 +116,21 @@ export function initForm({ onSuccess } = {}) {
     submit.disabled = true
     label.textContent = 'Enviando...'
 
+    const lead = {
+      nome: data.nome,
+      whatsapp: data.whatsapp,
+      email: data.email,
+      empresa: data.empresa,
+      segmento: data.segmento,
+      faturamento: data.faturamento,
+      mensagem: data.mensagem,
+      origem: location.href,
+    }
+
     try {
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      const json = await res.json().catch(() => ({}))
-      if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || res.statusText)
+      const results = await Promise.allSettled([saveToSheet(lead), sendEmail(payload)])
+      results.forEach((r, i) => r.status === 'rejected' && console.error(['[form] sheets', '[form] email'][i], r.reason))
+      if (results.every((r) => r.status === 'rejected')) throw new Error('all deliveries failed')
 
       form.reset()
       done.hidden = false
@@ -110,7 +138,7 @@ export function initForm({ onSuccess } = {}) {
       window.dataLayer?.push({ event: 'generate_lead', segmento: data.segmento })
       window.fbq?.('track', 'Lead')
     } catch (err) {
-      console.error('[form]', err)
+      console.error('[form]', err.message)
       status.textContent = 'Não foi possível enviar agora. Tente de novo ou escreva para contato@vortexinc.com.br.'
     } finally {
       submit.disabled = false
