@@ -136,6 +136,7 @@ export function initForm({ onSuccess } = {}) {
       done.hidden = false
       onSuccess?.(done)
       window.dataLayer?.push({ event: 'generate_lead', segmento: data.segmento })
+      window.dataLayer?.push({ event: 'form_submited_datalayer', segmento: data.segmento, faturamento: data.faturamento })
       window.fbq?.('track', 'Lead')
     } catch (err) {
       console.error('[form]', err.message)
